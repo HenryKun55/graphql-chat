@@ -1,0 +1,27 @@
+    type Message {
+    title: String!
+    author: String!
+    body: String!
+}
+
+type Query {
+    messages: [Message!]!
+}
+
+type Mutation {
+    addMessage(
+        author: String!,
+        title: String!,
+        body: String!
+    ): Message!
+}
+
+type Subscription {
+    typing(author: String!): String!
+    message: MessageSubscription!
+}
+
+type MessageSubscription {
+    mutation: String!
+    data: Message!
+}
