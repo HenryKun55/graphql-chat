@@ -1,14 +1,7 @@
-const { withFilter } = require('graphql-yoga')
-
 const Subscription = {
     typing: {
         subscribe(_, args, { pubsub }) {
-            withFilter(
-                () => pubsub.asyncIterator('typing'),
-                (payload, variables) => {
-                    return payload.author === variables.author;
-                }
-            )
+            return pubsub.asyncIterator('typing')
         } 
     },
     message: {

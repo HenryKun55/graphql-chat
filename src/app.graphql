@@ -1,4 +1,4 @@
-    type Message {
+type Message {
     title: String!
     author: String!
     body: String!
@@ -14,6 +14,7 @@ type Mutation {
         title: String!,
         body: String!
     ): Message!
+    typing(author: String!): String!
 }
 
 type Subscription {

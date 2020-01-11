@@ -1,7 +1,7 @@
 const Message = require('../models/Message')
 
 const Mutation = {
-    async addMessage(_, { title, body, author }, { pubsub }){
+    async addMessage(_, { title, body, author }, { pubsub }) {
 
         const message = await Message.create({title, body, author})
         
@@ -13,6 +13,15 @@ const Mutation = {
         });
 
         return message
+    },
+
+    typing(_, { author }, { pubsub }) {
+
+        pubsub.publish("typing", {
+            typing: author
+        });
+
+        return author
     }
 }
 

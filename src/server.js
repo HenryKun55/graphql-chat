@@ -19,5 +19,3 @@ const server = new GraphQLServer({
 })
 
 server.start()
-
-module.exports = pubsub
